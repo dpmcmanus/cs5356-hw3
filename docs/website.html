@@ -24,7 +24,7 @@
 
     /* Header with a cool backdrop-filter effect */
     header {
-      background: rgba(76, 175, 80, 0.8);
+      background: rgb(184, 39, 39);
       color: white;
       padding: 1rem;
       text-align: center;
@@ -97,18 +97,15 @@
   </header>
 
   <main>
-    <!-- Bio Section -->
     <section id="bio">
       <figure>
-        <!-- Replace with your own image file placed in the "images" folder -->
-        <img src="images/myphoto.jpg" alt="My Photo">
+        <img src="mcmanus.jpg" alt="My Photo">
         <figcaption>
-          Hi, I'm [Your Name]. I'm passionate about web development, design, and creating cool projects.
+          Hello!
         </figcaption>
       </figure>
     </section>
 
-    <!-- Details Section: HTML element not discussed in detail -->
     <section id="extra-info">
       <h2>More About Me</h2>
       <details>
@@ -127,11 +124,10 @@
   </main>
 
   <footer>
-    <p>&copy; 2023 My Bio Site</p>
+    <p>For Building Startup Systems</p>
   </footer>
 
   <script>
-    // Fetch a random quote from the Quotable API (no authentication needed)
     fetch('https://api.quotable.io/random')
       .then(response => response.json())
       .then(data => {
