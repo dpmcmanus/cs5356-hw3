@@ -1,31 +1,148 @@
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
 <head>
-    <title>Example from class</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Bio & Fun Stuff</title>
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      padding: 1rem;
+      /* Use CSS Grid for layout */
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+    }
+
+    /* Header with a cool backdrop-filter effect */
+    header {
+      background: rgba(76, 175, 80, 0.8);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      backdrop-filter: blur(5px);  /* Blurs the content behind the header */
+    }
+
+    /* Main content area using CSS Grid */
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 1rem 0;
+    }
+
+    /* Bio Section */
+    figure {
+      margin: 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      padding: 1rem;
+    }
+
+    figcaption > * + * {
+      margin-top: 0.5rem;
+    }
+
+    /* Details Section */
+    #extra-info {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    /* API Data Section */
+    #quote-section {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 375px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Test for github site hosting</h1>
-    <h2>Core Concepts</h2>
-    <section>
-    <p class="highlight">HTML is the standard markup language for creating Web pages.</p>
-    <p>CSS is the language for describing the presentation of Web pages, including colors, layout, and fonts.</p>
-    <p>Disclaimer <p>
+  <header>
+    <h1>Welcome to My Website!</h1>
+  </header>
+
+  <main>
+    <!-- Bio Section -->
+    <section id="bio">
+      <figure>
+        <!-- Replace with your own image file placed in the "images" folder -->
+        <img src="images/myphoto.jpg" alt="My Photo">
+        <figcaption>
+          Hi, I'm [Your Name]. I'm passionate about web development, design, and creating cool projects.
+        </figcaption>
+      </figure>
     </section>
-    <h2 class="highlight">Intersting!</h2>
-    
+
+    <!-- Details Section: HTML element not discussed in detail -->
+    <section id="extra-info">
+      <h2>More About Me</h2>
+      <details>
+        <summary>Click here to learn a fun fact!</summary>
+        <p>
+          I recently discovered that the HTML <code>&lt;details&gt;</code> element creates a built-in disclosure widget without extra JavaScript. It's great for FAQs!
+        </p>
+      </details>
+    </section>
+
+    <!-- API Data Section -->
+    <section id="quote-section">
+      <h2>Random Quote</h2>
+      <p id="quote">Loading quote...</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 My Bio Site</p>
+  </footer>
+
+  <script>
+    // Fetch a random quote from the Quotable API (no authentication needed)
+    fetch('https://api.quotable.io/random')
+      .then(response => response.json())
+      .then(data => {
+        const quoteElement = document.getElementById('quote');
+        quoteElement.textContent = `"${data.content}" — ${data.author}`;
+      })
+      .catch(error => {
+        console.error('Error fetching quote:', error);
+        const quoteElement = document.getElementById('quote');
+        quoteElement.textContent = "Sorry, couldn't load a quote at this time.";
+      });
+  </script>
 </body>
 </html>
-
-<style>
-    p { 
-        color: rgb(16, 16, 201);
-    }
-    .highlight {
-        background-color: antiquewhite;
-        padding: 0.25em;
-        border-radius: 4px;
-    }
-    section :nth-child(3) {
-        font-size: 0.8em;
-    }
-</style>
