@@ -6,7 +6,7 @@
     box-sizing: border-box;
     margin: 0rem;
     padding: 0rem;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
   header {
@@ -30,19 +30,25 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     padding: 1rem 0;
+    background-color: white;
   }
 
   section {
-    flex: 1 1 300px; /* Grow and shrink with a base width of 300px */
+    flex: 1 1 300px;
     display: flex;
     flex-direction: column;
-    border-radius: 8px; /* Round corners */
-    overflow: hidden; /* Ensure content doesn't overflow the rounded corners */
-    padding: 1rem; /* Add padding inside the sections */
-    border: 1px solid #ddd; /* Optional: Add a border for better visibility */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    background-color:whitesmoke;
   }
 
+  section:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+  }
+  
   img {
     display: block;
     width: 100%;
@@ -63,6 +69,7 @@
     color: white;
     text-align: center;
     padding: 1rem;
+    border-radius: 8px;
   }
 
   button {
@@ -87,20 +94,16 @@
     border-radius: 8px;
   }
 
-@media (max-width: 375px) {
-  main {
-    grid-template-columns: 1fr;
+  @media (max-width: 375px) {
+    main {
+      grid-template-columns: 1fr;
+    }
   }
-}
 
 </style>
 
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Bio & Fun Stuff</title>
-</head>
+
 <body>
   <header>
     <h1>Welcome to My Website!</h1>
@@ -137,7 +140,7 @@
 
     <!-- Section 3 -->
     <section id="composer-info">
-      <h2>Favorite Composers</h2>
+      <h2>Orchestral Composers</h2>
       <div id="composer-data"></div>
       <button id="fetch-composer-data">Click Me!</button>
     </section>
@@ -169,6 +172,9 @@
   
       // Function to display composer data
       function displayComposerData(composers) {
+          // Clear existing content
+          composerDataDiv.innerHTML = '';
+  
           composers.forEach(composer => {
               const composerDiv = document.createElement('div');
               composerDiv.classList.add('composer');
